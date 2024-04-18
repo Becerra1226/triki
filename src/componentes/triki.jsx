@@ -17,31 +17,31 @@ const combinaciones = [
   { combo: [2, 4, 6], claseGanador: "ganador-diagonal-2" },
 ];
 
- function checkWinner(celdas, asignarGanador) {
-   for (const { combo, claseGanador } of combinaciones) {
-     const valorCelda1 = celdas[combo[0]];
-     const valorCelda2 = celdas[combo[1]];
-     const valorCelda3 = celdas[combo[2]];
+function checkWinner(celdas, asignarGanador) {
+  for (const { combo, claseGanador } of combinaciones) {
+    const valorCelda1 = celdas[combo[0]];
+    const valorCelda2 = celdas[combo[1]];
+    const valorCelda3 = celdas[combo[2]];
 
-     if (
-       valorCelda1 !== null &&
-       valorCelda1 === valorCelda2 &&
-       valorCelda1 === valorCelda3
-     ) {
-       asignarGanador(claseGanador);
-       console.log("ganaste");
-     }
-   }
- }
+    if (
+      valorCelda1 !== null &&
+      valorCelda1 === valorCelda2 &&
+      valorCelda1 === valorCelda3
+    ) {
+      asignarGanador(claseGanador);
+      console.log("ganaste");
+    }
+  }
+}
 
 function Triki() {
   const [celdas, asignarCeldas] = useState(Array(9).fill(null));
   const [turno, asignarTurno] = useState(jugador_x);
   const [claseGanador, asignarGanador] = useState();
 
-   useEffect(() => {
-     checkWinner(celdas, asignarGanador);
-   }, [celdas]);
+  useEffect(() => {
+    checkWinner(celdas, asignarGanador);
+  }, [celdas]);
 
   const handtileclick = (index) => {
     if (celdas[index] !== null) {
